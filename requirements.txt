@@ -29,7 +29,6 @@ protobuf==3.17.0
 pycoin==0.90.20201031
 pyinstaller==4.3
 pyinstaller-hooks-contrib==2021.2
-python-magic-bin==0.4.14
 pytz==2021.1
 pywin32-ctypes==0.2.0
 six==1.16.0
