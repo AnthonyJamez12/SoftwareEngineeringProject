@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'l6_b*e8#okbil%3^vk!bupv&hf*b+gysf+=3^jydyx!!3y^*)4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 #Was True before
 ALLOWED_HOSTS = ['proton-joy.herokuapp.com', '127.0.0.1']
 
