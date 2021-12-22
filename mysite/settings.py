@@ -162,10 +162,9 @@ MEDIA_ROOT=os.path.join(BASE_DIR,"media/")
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-<<<<<<< HEAD
+
 AWS_S3_REGION_NAME = "us-east-2"
-=======
->>>>>>> 800140e6b3bc4de431b5d5e112c5bf3ec2bc9c6f
+
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
