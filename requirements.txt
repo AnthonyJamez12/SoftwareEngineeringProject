@@ -15,6 +15,7 @@ filelock==3.0.12
 Flask==2.0.0
 Flask-MySQLdb==0.2.0
 future==0.18.2
+gunicorn==20.1.0
 itsdangerous==2.0.0
 Jinja2==3.0.0
 jmespath==0.10.0
@@ -33,6 +34,8 @@ protobuf==3.17.0
 pycoin==0.90.20201031
 pyinstaller==4.3
 pyinstaller-hooks-contrib==2021.2
+python-dateutil==2.8.2
+python-magic-bin==0.4.14
 pytz==2021.1
 pywin32-ctypes==0.2.0
 s3transfer==0.5.0
