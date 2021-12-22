@@ -33,8 +33,11 @@ protobuf==3.17.0
 pycoin==0.90.20201031
 pyinstaller==4.3
 pyinstaller-hooks-contrib==2021.2
+<<<<<<< HEAD
 python-dateutil==2.8.2
 python-magic-bin==0.4.14
+=======
+>>>>>>> fcea4d1445384a643196d89f43196b68f7c6f981
 pytz==2021.1
 pywin32-ctypes==0.2.0
 s3transfer==0.5.0
