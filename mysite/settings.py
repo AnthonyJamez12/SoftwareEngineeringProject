@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 
 import os
-from decouple import config
 import django_heroku
 
 
@@ -81,16 +80,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'df6a7ila5tl07m',
-        'USER': 'fwirtxxhpgvtob',
-        'PASSWORD': '28a831d314cd4a88f92f5fef35e0e6e6bfcc38a43775963e8f0c6aac456b3632',
-        'HOST': 'ec2-50-19-160-40.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
