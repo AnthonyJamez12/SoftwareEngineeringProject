@@ -5,7 +5,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 
+
 # Create your views here.
+
 def register(request):
     form = UserCreationForm(request.POST)
     if form.is_valid():
@@ -18,7 +20,7 @@ def register(request):
         form = RegisterForm()
 
 
-    return render(request, "register/register.html", {"form": form})
+    return render(request, "register/register_2.html", {"form": form})
 
 
 def logout(request):

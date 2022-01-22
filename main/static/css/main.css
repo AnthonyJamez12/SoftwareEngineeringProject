@@ -208,7 +208,7 @@ body {
 
 
 /* IPhone X */
-@media (max-width: 376px) {
+@media (max-width: 30px) {
     .navbar {
       position: fixed;
       bottom: 0;

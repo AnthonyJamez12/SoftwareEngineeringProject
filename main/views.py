@@ -16,6 +16,8 @@ def home(response):
     return render(response, "main/home.html", {})
 
 
+
+
 def profile(request):
     img = Uploads.objects.filter(profile_id = request.user.profile)
     profile = Profile.objects.filter(user = request.user)
