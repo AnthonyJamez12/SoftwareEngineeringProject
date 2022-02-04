@@ -12,7 +12,8 @@ class Profile_Form(forms.ModelForm):
 
 
 class Uploads_Form(forms.ModelForm):
+    album = forms.CharField(max_length=500,required=False)
 
     class Meta:
         model = Uploads
-        fields = ("file",)
+        fields = ("file", 'title', 'artiste', 'audio_file', )

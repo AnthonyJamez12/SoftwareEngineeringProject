@@ -4,25 +4,14 @@
 
 {% block content %}
 <body>
-{% endblock %}
-
-{% block javascript %}
-
-
-
-
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
 
-
-
-<body>
 <main role="main" class="container" style="padding-top: 10px;">
 	<div class="row">
 		<div class="col-md-6" style="height: 50%; margin: auto;">
-            <a href="{% url 'profile' %}" class = "edit_profile_link"><button class = "edit_profile_button" type="button" >Back To Profile</button></a>
+            <a href="{% url 'profile' user  %}" class = "edit_profile_link"><button class = "edit_profile_button" type="button" >Back To Profile</button></a>
 			<form method="POST" enctype="multipart/form-data" id="post-form" style="margin-bottom: 20px; border: 2px solid grey; padding: 30px 20px;">
 			  {% csrf_token %}
 			  <fieldset class="form-group">

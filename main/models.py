@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+from .validators import validate_is_audio
 
 # Create your models here.
 
@@ -22,6 +22,12 @@ class Profile(models.Model):
 
 
 class Uploads(models.Model):
+    title = models.CharField(max_length = 500, null = True,)
+    artiste = models.CharField(max_length=500, null = True,)
+    album = models.ForeignKey('Album', on_delete=models.SET_NULL,null=True,blank=True)
+    time_length=models.DecimalField(max_digits=20, decimal_places=2,blank=True, null = True,)
+    audio_file=models.FileField(upload_to='musics/',validators=[validate_is_audio], null = True,)
+
     caption = models.CharField(max_length = 100, blank=True)
     file = models.ImageField(upload_to = "img/%y", null = True)
     profile = models.ForeignKey(Profile, on_delete = models.CASCADE, default = None, null = True)
@@ -30,3 +36,6 @@ class Uploads(models.Model):
 
     def __str__(self):
         return self.caption and str(self.file)
+
+class Album(models.Model):
+    name=models.CharField(max_length=400)

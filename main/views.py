@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from .forms import *
@@ -18,7 +18,7 @@ def home(response):
 
 
 
-def profile(request):
+def profile(request, user):
     img = Uploads.objects.filter(profile_id = request.user.profile)
     profile = Profile.objects.filter(user = request.user)
     context = {"profile": profile, "img": img}
@@ -34,7 +34,7 @@ def profile_uploads(request):
             form.instance.profile = request.user.profile
             form.save()
             obj = form.instance
-            return redirect('/profile')
+            return redirect('/profile/<str:user>/')
     else:
         form = Uploads_Form()
     img = Uploads.objects.all()
@@ -43,12 +43,13 @@ def profile_uploads(request):
 
 
 
-def profile_settings(request):
-	profile = request.user.profile
-	form = Profile_Form(instance= profile)
-	if request.method == 'POST':
-		form = Profile_Form(request.POST, request.FILES,instance = profile)
-		if form.is_valid():
-			form.save()
-	context = {'form':form}
-	return render(request, 'main/profile_settings.html', context)
+def profile_settings(request, user):
+    profile = Profile.objects.filter(user = request.user).first()
+
+    form = Profile_Form(instance = profile)
+    if request.method == 'POST':
+        form = Profile_Form(request.POST, request.FILES,instance = profile)
+        if form.is_valid():
+            form.save()
+    context = { "form": form}
+    return render(request, 'main/profile_settings.html', context)

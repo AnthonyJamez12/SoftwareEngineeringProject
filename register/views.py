@@ -20,7 +20,7 @@ def register(request):
         form = RegisterForm()
 
 
-    return render(request, "register/register_2.html", {"form": form})
+    return render(request, "register/register.html", {"form": form})
 
 
 def logout(request):
