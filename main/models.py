@@ -35,7 +35,7 @@ class Uploads(models.Model):
 
 
     def __str__(self):
-        return self.caption and str(self.file)
+        return str(self.file) and f"/single_page/{self.id}"
 
 class Album(models.Model):
     name=models.CharField(max_length=400)

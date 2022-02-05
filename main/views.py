@@ -19,7 +19,7 @@ def home(response):
 
 
 def profile(request, user):
-    img = Uploads.objects.filter(profile_id = request.user.profile)
+    img = Uploads.objects.filter(profile_id = request.user.profile)         #Make sure only your account *images stays on the page
     profile = Profile.objects.filter(user = request.user)
     context = {"profile": profile, "img": img}
 
@@ -51,5 +51,13 @@ def profile_settings(request, user):
         form = Profile_Form(request.POST, request.FILES,instance = profile)
         if form.is_valid():
             form.save()
-    context = { "form": form}
+    context = {"profile": profile, "form": form}
     return render(request, 'main/profile_settings.html', context)
+
+
+def single_page(request, id):
+    img = Uploads.objects.get(id = id)         #Make sure only your account *images stays on the page
+
+    context = { "img": img}
+
+    return render(request, "main/single_page.html", context)
