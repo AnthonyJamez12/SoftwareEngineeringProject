@@ -31,7 +31,7 @@
                 <div class="col-lg-4 col-md-4 col-12" >
             <div class="text-center mt-2">
 
-                    <a href="{% url 'profile' user %}single_page/{{x.id}}/ " class = "edit_profile_link"><img src="{{x.file.url}}" height="100%" width="100%"  class="myImg"></a>
+                    <a href="{% url 'single_page' x.id %}" class = "edit_profile_link"><img src="{{x.file.url}}" height="100%" width="100%"  class="myImg"></a>
 
                 <div id="caption" class="myCaption">{{x.title}}</div>
 
