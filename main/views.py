@@ -56,7 +56,7 @@ def profile_settings(request, user):
 
 
 def single_page(request, id):
-    img = Uploads.objects.get(id = id)    #Make sure only your account *images stays on the page
+    img = Uploads.objects.filter(id = id).first()
     profile = Uploads.objects.filter(id = request.user.id)
 
     context = { "img": img, "profile": profile}

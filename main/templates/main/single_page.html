@@ -7,15 +7,32 @@
 <body>
 
 
-    <p>{{title}}</p>
 
 
 
-    <img src="{{x.file.url}}" height="100%" width="100%"  class="myImg">
+    <img src="{{img.file.url}}" height="30%" width="30%"  class="myImg">
 
 
+    <p>{{img.title}}</p>
+    <p>{{img.artiste}}</p>
+    <audio id = "myAudio" class="audio-player" preload="metadata" autoplay="false" src="{{img.audio_file.url}}"></audio>
+    <a onClick="togglePlay()"><i class="fa fa-fw fa-pause"></i></a>
 
 
-
-    {% endblock %}
 </body>
+<script>
+    var myAudio = document.getElementById("myAudio");
+    var isPlaying = false;
+
+    function togglePlay() {
+      isPlaying ? myAudio.pause() : myAudio.play();
+    };
+
+    myAudio.onplaying = function() {
+      isPlaying = true;
+    };
+    myAudio.onpause = function() {
+      isPlaying = false;
+    };
+</script>
+{% endblock %}
