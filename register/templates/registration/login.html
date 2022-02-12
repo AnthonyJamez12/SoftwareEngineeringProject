@@ -1,56 +1,73 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html>
-
-<head>
-	<title>Login</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+    <title>Login</title>
     <link href= "{% static 'css/register.css' %}" rel="stylesheet"> <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="main-flexbox">
+        <!-- -------------------------------------LEFT IMAGE FLEXBOX-------------------------------------------->
+        <div class="left-image-flexbox"></div>
 
-</head>
-<body>
-    <div class="row">
-        <div class = "col-lg-8"></div>
-            <div class = "col-lg-4">
-				<div class="d-flex justify-content-center">
+        <!-- -------------------------------------RIGHT FORM FLEXBOX-------------------------------------------->
+        <div class="right-form">
+          <div class="item1-flexbox">
+            <!-- -------------------------------------RADIO IMAGE-------------------------------------------->
+            <div class="radio-image"></div>
+
+            <!-- -------------------------------------HEADING-------------------------------------------->
+            <h1>Sign Up Today</h1>
+
+            <!-- -------------------------------------FORM SECTION------------------------------------------->
+            <div class="form-section">
+              <form method="POST" action="#" autocomplete="off">
+                  {% csrf_token %}
+                <div class="input-fields">
+                  <input type="text" id="username" placeholder=" " {{form.username}}
+				  <div></div>
+                  <label for="username">Username</label>
+                </div>
 
 
-					<h3 id="form-title">LOGIN</h3>
-				</div>
-				<div class="d-flex justify-content-center form_container">
-					<form method="POST" action="">
-                        {% csrf_token %}
-						<div class="input-group mb-3">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							{{form.username}}
-						</div>
-						<div class="input-group mb-2">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-							{{form.password}}
-						</div>
 
-							<div class="d-flex justify-content-center mt-3 login_container">
-				 				<input class="btn login_btn" type="submit" value="Login">
-				   			</div>
-					</form>
-				</div>
-                {{form.errors}}
-				<div class="mt-4">
-					<div class="d-flex justify-content-center links">
-						Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
-					</div>
+                <div class="input-fields">
+                  <input type="password" id="password" placeholder=" "  {{form.password}}
+                  <label for="password">Password</label>
+                </div>
 
-				</div>
+                <!-- -------------------------------------BUTTONS-------------------------------------------->
+                <div class="buttons">
+                    <button type="submit" value="Login">Login</button>
+                </div>
+              </form>
+            </div>
+            <!-- -------------------------------------SOCIAL MEDIA SECTION---------------------------------------->
+            <div class="social-media-icons">
+              <a href="#"><div class="facebook"></div></a>
+              <a href="#"><div class="instagram"></div></a>
+              <a href="#"><div class="twitter"></div></a>
+            </div>
+			<div class="login-link">
+				Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
 			</div>
-		</div>
-</body>
-
+          </div>
+          <!-- ----------------------------------NTAINER / ITEM2 FLEXBOX------------------------------->
+          <div class="footer-items-container item2-flexbox">
+            <div class="footer-items-flex">
+              <span>Legal</span>
+              <span>Privacy and Policy</span>
+              <span>About</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

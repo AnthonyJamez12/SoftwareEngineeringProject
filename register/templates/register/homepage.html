@@ -23,24 +23,23 @@
             <div class="radio-image"></div>
 
             <!-- -------------------------------------HEADING-------------------------------------------->
-            <h1>Join the Family <br> Today!</h1>
+            <h1>Sign Up Today</h1>
 
             <!-- -------------------------------------FORM SECTION------------------------------------------->
             <div class="form-section">
-              <form method="POST" action="#" autocomplete="off">
-                  {% csrf_token %}
+              <form action="#" autocomplete="off">
                 <div class="input-fields">
-                  <input type="text" id="username" placeholder=" " {{form.username}}
-                  <label for="username">Username</label>
+                  <input type="text" id="username" placeholder=" " />
+                  <label for="username">Username </label>
                 </div>
 
                 <div class="input-fields">
-                  <input type="email" id="email" placeholder=" "  {{form.email}}
+                  <input type="email" id="email" placeholder=" " />
                   <label for="email">Email </label>
                 </div>
 
                 <div class="input-fields">
-                  <input type="password" id="password" placeholder=" "  {{form.password1}}
+                  <input type="password" id="password" placeholder=" " />
                   <label for="password">Password</label>
                 </div>
 
@@ -49,13 +48,14 @@
                     type="password"
                     id="confirm_passwaord"
                     placeholder=" "
-                    {{form.password2}}
+                  />
                   <label for="confirm_passwaord">Confirm Password</label>
                 </div>
 
                 <!-- -------------------------------------BUTTONS-------------------------------------------->
                 <div class="buttons">
-                  <button  type="submit" value="Register Account">Signup</button>
+                  <button>Login</button>
+                  <button>Signup</button>
                 </div>
               </form>
             </div>
@@ -64,9 +64,6 @@
               <a href="#"><div class="facebook"></div></a>
               <a href="#"><div class="instagram"></div></a>
               <a href="#"><div class="twitter"></div></a>
-            </div>
-            <div class="register-link">
-                Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
             </div>
           </div>
           <!-- ----------------------------------NTAINER / ITEM2 FLEXBOX------------------------------->

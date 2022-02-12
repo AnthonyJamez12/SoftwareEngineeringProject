@@ -26,7 +26,7 @@ body {
 .left-image-flexbox {
   width: 73%;
   height: 100%;
-  background-image: url("../images/Website Height.png");
+  background-image: url("../images/Website.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -53,7 +53,7 @@ body {
 .radio-image {
   background-image: url("../images/ARMSJARB\ Radio\ Logo.png");
   width: 45%;
-  height: 200px;
+  height: 135px;
   background-position: bottom;
   background-size: 95%;
   background-repeat: no-repeat;
@@ -61,7 +61,6 @@ body {
 
 /*  ------------------------------------HEADING------------------------------------------- */
 h1 {
-    text-align: center;
   margin: 0;
   font-weight: bold;
   font-size: 35px;
@@ -138,14 +137,7 @@ input:not(:placeholder-shown) ~ label,
 .buttons button:hover {
   cursor: pointer;
 }
-/*  -------------------------------------Login Link---------------------------------------- */
-.register-link{
-    margin-top: 20px;
-}
 
-.login-link{
-    margin-top: 20px;
-}
 /*  -------------------------------------SOCIAL MEDIA SECTION---------------------------------------- */
 .social-media-icons {
   margin-top: 10px;
