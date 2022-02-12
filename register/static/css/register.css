@@ -26,7 +26,7 @@ body {
 .left-image-flexbox {
   width: 73%;
   height: 100%;
-  background-image: url("/images/Website Height.png");
+  background-image: url("../images/Website Height.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -51,7 +51,7 @@ body {
 
 /*  -------------------------------------RADIO IMAGE---------------------------------------- */
 .radio-image {
-  background-image: url("images/ARMSJARB Radio Logo.png");
+  background-image: url("../images/ARMSJARB\ Radio\ Logo.png");
   width: 45%;
   height: 200px;
   background-position: bottom;
@@ -163,17 +163,17 @@ input:not(:placeholder-shown) ~ label,
 }
 
 .facebook {
-  background-image: url("static/images/Face Book Icon.png");
+  background-image: url("../images/Face\ Book\ Icon.png");
   width: 44px !important;
   height: 44px !important;
   margin-top: -7px !important ;
 }
 
 .instagram {
-  background-image: url("/images/Instagram Icon.png");
+  background-image: url("../images/Instagram\ Icon.png");
 }
 .twitter {
-  background-image: url("/images/Twitter Icon.png");
+  background-image: url("../images/Twitter\ Icon.png");
 }
 
 /* -------------------------------------FOOTER CONTAINER-------------------------------------- - */
