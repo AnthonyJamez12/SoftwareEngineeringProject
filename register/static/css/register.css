@@ -163,17 +163,17 @@ input:not(:placeholder-shown) ~ label,
 }
 
 .facebook {
-  background-image: url("../images/Face\ Book\ Icon.png");
+  background-image: url("/images/Face Book Icon.png");
   width: 44px !important;
   height: 44px !important;
   margin-top: -7px !important ;
 }
 
 .instagram {
-  background-image: url("../images/Instagram\ Icon.png");
+  background-image: url("/images/Instagram Icon.png");
 }
 .twitter {
-  background-image: url("../images/Twitter\ Icon.png");
+  background-image: url("/images/Twitter Icon.png");
 }
 
 /* -------------------------------------FOOTER CONTAINER-------------------------------------- - */
