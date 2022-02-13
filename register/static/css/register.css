@@ -105,7 +105,7 @@ label {
 }
 
 input:focus {
-  border: 2px solid #224952;
+  border: 12px solid #224952;
 }
 input:focus ~ label,
 input:not(:placeholder-shown) ~ label,
