@@ -3,81 +3,119 @@
 
 
 {% block content %}
-<link href= "{% static 'css/profile.css' %}" rel="stylesheet">
-<body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href= "{% static 'css/style.css' %}" rel="stylesheet">
+    <link href= "{% static 'js/sript.js' %}" rel="stylesheet">
+    <title>Profile Page</title>
+  </head>
+  <body>
 
-<div class="container">
-    <div class="row ">
-        <div class=".col">
-            {% for x in profile %}
-                <img src="{{ x.profile_picture.url }}" alt="" class="profile_pic" height= 250px width = 250px>
-            {% endfor %}
+
+    <!-- -------------------------------------PROFILE SECTION------------------------------------------ -->
+    <div class="profile-section">
+      <div class="grey-section">
+
+          <img src="{{ profile.banner_picture.url }}"  alt="banner-pic"/>
+
+      </div>
+      <div class="profile-flexbox">
+        <div class="profile-pic">
+
+          <img src="{{ profile.profile_picture.url }}"  alt="profile-pic"/>
 
         </div>
-        <div class=".col">
-            <h2 class="h2-responsive">{{user}}</h2>
-            <a href="{% url 'profile_settings' user %}" class = "edit_profile_link"><button class = "edit_profile_button" type="button" >Edit Profile</button></a>
-            {% for x in profile %}
-            <p>{{ x.first_name | default_if_none:"" }} {{ x.last_name  | default_if_none:""}}</p>
-            <p>{{ x.bio | default_if_none:""  }} </p>
-            {% endfor %}
-        </div>
+
+        <p class="name">{{user}}</p>
+
+        <p class="about">
+          {{ profile.bio | default_if_none:""  }}
+        </p>
+
+        <a href="{% url 'profile_settings' user %}" class = "edit_profile_link"><button class="edit-profile-btn">Edit Profile</button></a>
+      </div>
     </div>
-<hr>
-    <div class="row ">
-        <div class="container">
-            {% for x in img %}
-            {% if forloop.first %}<div class="row ">{% endif %}
-                <div class="col-lg-4 col-md-4 col-12" >
-            <div class="text-center mt-2">
-                    <a href="{% url 'single_page' x.id %}" class = "edit_profile_link"><img src="{{x.file.url}}" height="100%" width="100%"  class="myImg"></a>
-            </div>
-                </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class=row>{% endif %}
-                {% if forloop.last %}</div>{% endif %}
-            {% endfor %}
+
+    <!-- -------------------------------------------ICON SWITCHES---------------------------------------- -->
+    <div class="icons-section">
+      <div class="icon-container">
+        <div class="icons-section-flexbox" id="icon_flex">
+          <div class="icon_switch"><i class="fal fa-heart"></i></div>
+          <div class="icon_switch"><i class="fal fa-history"></i></div>
+          <div class="icon_switch"><i class="fal fa-indent"></i></div>
+          <div class="icon_switch"><i class="fal fa-music"></i></div>
+          <div class="icon_switch"><i class="fal fa-line-columns"></i></div>
         </div>
+        <div class="line" id="line"></div>
+      </div>
     </div>
-</div>
 
+    <!-- -----------------------------------------ALBUM SECTION---------------------------------------- -->
+    <div class="album-section">
+      <h2>Albums</h2>
+      {% for x in img %}
+      {% if forloop.first %}<div class="row ">{% endif %}
+      <div class="col-4 col-4 col-4" >
+          <div class="text-center mt-2">
+              <a href="{% url 'single_page' x.id %}" ><img src="{{x.file.url}}" href="{% url 'single_page' x.id %}" height="100%" width="100%"  class="myImg"></a>
+          </div>
+       </div>
+          {% if forloop.counter|divisibleby:3 %}
+      </div>
+      <div class=row>{% endif %}
+          {% if forloop.last %}
+      </div>{% endif %}
+      {% endfor %}
+    </div>
+    <!-- -----------------------------------------SINGLE SECTION---------------------------------------- -->
+    <div class="single-section">
+      <h2>Singles</h2>
+    </div>
 
+    <!-- ----------------------------------------------END------------------------------------------- -->
 
+  </body>
+  <script>const icon_switch = document.querySelectorAll('.icon_switch');
+  const line = document.getElementById('line');
+  const icon_flex = document.getElementById('icon_flex');
 
+  icon_flex.addEventListener('click', onclickthree);
+  function onclickthree() {
+    for (const element of icon_switch) {
+      element.addEventListener('click', onclick);
 
+      function onclick(e) {
+        if (e.target.offsetLeft != 0) {
+          console.log(e.target.offsetLeft);
+          console.log('osmaa');
+          const dist = e.target.offsetLeft - 10;
 
-
-
-<script>
-
-    // Get the modal
-    var modal = document.getElementById('myModal');
-
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var img = $('.myImg');
-    var modalImg = $("#img01");
-    var captionText = $("#caption");
-    $('.myImg').click(function(){
-        modal.style.display = "block";
-        var newSrc = this.src;
-        var newAlt = this.innerHTML;
-        modalImg.attr('src', newSrc);
-        captionText.attr('innerHTML', newAlt);
-    });
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      modal.style.display = "none";
+          const dist2 = dist + 'px';
+          line.style.left = dist2;
+        }
+      }
     }
+  }
 
+  // program for search bar animation
+  function openSearch() {
+    document.getElementById('myOverlay').style.display = 'block';
+  }
+
+  function closeSearch() {
+    document.getElementById('myOverlay').style.display = 'none';
+  }
 </script>
-
-
-
-
 {% endblock %}
-</body>
+</html>

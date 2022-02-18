@@ -3,27 +3,27 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from .forms import *
 from .models import *
+from django.contrib.auth import get_user_model
+
 
 # Create your views here.
 #img = Uploads.objects.all()
 
-def index(response, id):
-    ls = ToDoList.objects.get(id = id)
-    return render(response, "main/base.html", {})
-
-
-def home(response):
-    return render(response, "main/home.html", {})
+def home(request):
+    return redirect(reverse("profile", args=[request.user]))
 
 
 
 
 def profile(request, user):
-    img = Uploads.objects.filter(profile_id = request.user.profile)         #Make sure only your account *images stays on the page
-    profile = Profile.objects.filter(user = request.user)
+    img = Uploads.objects.filter(profile_id = request.user.profile)
+    profile = Profile.objects.filter(user = request.user).first()
     context = {"profile": profile, "img": img}
 
     return render(request, "main/profile.html", context)
+
+
+
 
 
 def profile_uploads(request):
@@ -34,11 +34,13 @@ def profile_uploads(request):
             form.instance.profile = request.user.profile
             form.save()
             obj = form.instance
-            return redirect('/profile/<str:user>/')
+            return redirect(reverse("profile", args=[request.user]))
     else:
         form = Uploads_Form()
     img = Uploads.objects.all()
-    return render(request,"main/profile_uploads.html", {"img":img, "form":form})
+    #profile = Profile.objects.filter(user = request.user).first()
+    context = {"img":img, "form":form, "profile": profile}
+    return render(request,"main/profile_uploads.html", context)
 
 
 

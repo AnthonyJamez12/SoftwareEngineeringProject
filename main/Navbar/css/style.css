@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+
+/* -----------------------------------------GENERAL STYLING------------------------------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: #121212;
+}
+
+/* -------------------------------------------HEADER SECTION--------------------------------------- */
+
+.header-container {
+  width: 100%;
+  background-color: #89cff0;
+  padding: 12px;
+}
+
+.desktop-hide {
+  display: none;
+}
+
+.header-flexbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* -------------------------------HEADER LEFT FLEXBOX----------------------------------- - */
+.header-left-flexbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-icon {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  background-color: #fff;
+  color: #121212;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-field {
+  width: 285px;
+  position: relative;
+}
+
+.search-field > input {
+  display: block;
+  font-family: inherit;
+  width: 100%;
+  padding: 7px 10px;
+  padding-right: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search-field .search-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.header-right-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-right-image > img {
+  display: block;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+/*----------------- Mobile-Search ------------------*/
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.overlay-content {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+.overlay input[type='text'] {
+  font-family: inherit;
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 85%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background: white;
+}
+
+.overlay input[type='text']:hover {
+  background: #f1f1f1;
+}
+
+.overlay button {
+  font-family: inherit;
+  float: left;
+  width: 15%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.overlay button:hover {
+  background: #bbb;
+}
+
+/* ------------Responsive Style---------------- */
+
+@media (max-width: 560px) {
+  .search-field {
+    display: none;
+  }
+
+  .desktop-hide {
+    display: block;
+  }
+}

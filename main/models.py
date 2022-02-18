@@ -15,6 +15,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length = 50, null = True, blank = True)
     bio = models.TextField(max_length = 300, null = True, blank = True)
     profile_picture = models.ImageField(default = 'default.png', upload_to = "img/%y", null = True, blank = True)
+    banner_picture = models.ImageField(default = 'bg_image.png', upload_to = "img/%y", null = True, blank = True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -22,13 +23,8 @@ class Profile(models.Model):
 
 
 class Uploads(models.Model):
-    title = models.CharField(max_length = 500, null = True,)
-    artiste = models.CharField(max_length=500, null = True,)
-    album = models.ForeignKey('Album', on_delete=models.SET_NULL,null=True,blank=True)
-    time_length=models.DecimalField(max_digits=20, decimal_places=2,blank=True, null = True,)
-    audio_file=models.FileField(upload_to='musics/',validators=[validate_is_audio], null = True,)
-
-    caption = models.CharField(max_length = 100, blank=True)
+    album = models.ForeignKey('Album', on_delete=models.SET_NULL,null=True,blank=True)    
+    caption = models.CharField(max_length = 100, blank=True, null = True)
     file = models.ImageField(upload_to = "img/%y", null = True)
     profile = models.ForeignKey(Profile, on_delete = models.CASCADE, default = None, null = True)
     id = models.AutoField(primary_key = True, null = False)

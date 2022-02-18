@@ -15,12 +15,21 @@ def register(request):
         messages.info(request, "Thanks for registering. You are now logged in.")
         new_user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
         login(request, new_user)
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/profile/<str:user>/")
+        if user is not None:
+            if user.is_active:
+                login(request, new_user)
+                return HttpResponseRedirect("/profile/<str:user>/")
+            else:
+                return HttpResponseRedirect("/profile/<str:user>/")
     else:
         form = RegisterForm()
 
 
     return render(request, "register/register.html", {"form": form})
+
+
+
 
 
 def logout(request):

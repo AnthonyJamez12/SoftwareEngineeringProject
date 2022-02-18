@@ -8,7 +8,7 @@ from django.core.files import File
 class Profile_Form(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ("first_name", "last_name", "phone", "email", "bio", "profile_picture")
+        fields = ("first_name", "last_name", "phone", "email", "bio", "profile_picture", "banner_picture")
 
 
 class Uploads_Form(forms.ModelForm):
@@ -16,4 +16,4 @@ class Uploads_Form(forms.ModelForm):
 
     class Meta:
         model = Uploads
-        fields = ("file", 'title', 'artiste', 'audio_file', )
+        fields = ("file", 'caption' )
