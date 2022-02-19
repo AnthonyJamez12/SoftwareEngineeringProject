@@ -26,23 +26,14 @@
     <!-- -------------------------------------PROFILE SECTION------------------------------------------ -->
     <div class="profile-section">
       <div class="grey-section">
-
           <img src="{{ profile.banner_picture.url }}"  alt="banner-pic"/>
-
       </div>
       <div class="profile-flexbox">
         <div class="profile-pic">
-
           <img src="{{ profile.profile_picture.url }}"  alt="profile-pic"/>
-
         </div>
-
         <p class="name">{{user}}</p>
-
-        <p class="about">
-          {{ profile.bio | default_if_none:""  }}
-        </p>
-
+        <p class="about">{{ profile.bio | default_if_none:""  }}</p>
         <a href="{% url 'profile_settings' user %}" class = "edit_profile_link"><button class="edit-profile-btn">Edit Profile</button></a>
       </div>
     </div>
@@ -82,7 +73,6 @@
     <div class="single-section">
       <h2>Singles</h2>
     </div>
-
     <!-- ----------------------------------------------END------------------------------------------- -->
 
   </body>

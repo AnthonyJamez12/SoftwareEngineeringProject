@@ -64,3 +64,11 @@ def single_page(request, id):
     context = { "img": img, "profile": profile}
 
     return render(request, "main/single_page.html", context)
+
+
+def delete_photo(request, id):
+    if request.method == 'POST':
+        img = Uploads.objects.get(id = id)
+        img.delete()
+
+    return redirect(reverse("profile", args=[request.user]))

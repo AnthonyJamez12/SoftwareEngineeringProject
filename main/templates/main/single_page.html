@@ -15,9 +15,13 @@
 
     <p>{{img.title}}</p>
     <p>{{img.artiste}}</p>
-    <audio id = "myAudio" class="audio-player" preload="metadata" autoplay="false" src="{{img.audio_file.url}}"></audio>
-    <a onClick="togglePlay()"><i class="fa fa-fw fa-pause"></i></a>
 
+
+
+    <form method="POST" action="{% url 'delete_photo' img.id %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+    </form>
 
 </body>
 <script>

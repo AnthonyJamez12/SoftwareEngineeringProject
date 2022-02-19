@@ -10,6 +10,7 @@ urlpatterns = [
     path("profile_uploads/", views.profile_uploads, name = "profile_uploads"),
     path("profile_settings/<str:user>/", views.profile_settings, name = "profile_settings"),
     path("single_page/<str:id>/", views.single_page, name = "single_page"),
+    path("delete_photo/<str:id>/", views.delete_photo, name = "delete_photo"),
     path('hello_world', TemplateView.as_view(template_name='hello_world.html')),
 
 ]
