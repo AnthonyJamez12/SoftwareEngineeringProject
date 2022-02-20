@@ -16,7 +16,7 @@ def home(request):
 
 
 def profile(request, user):
-    img = Uploads.objects.filter(profile_id = request.user.profile)
+    img = Uploads.objects.filter(profile_id = request.user.profile).order_by("-id")
     profile = Profile.objects.filter(user = request.user).first()
     context = {"profile": profile, "img": img}
 
