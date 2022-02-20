@@ -23,9 +23,9 @@ class Profile(models.Model):
 
 
 class Uploads(models.Model):
-    album = models.ForeignKey('Album', on_delete=models.SET_NULL,null=True,blank=True)    
+    album = models.ForeignKey('Album', on_delete=models.SET_NULL,null=True,blank=True)
     caption = models.CharField(max_length = 100, blank=True, null = True)
-    file = models.ImageField(upload_to = "img/%y", null = True)
+    file = models.FileField(upload_to = "img/%y", null = True)
     profile = models.ForeignKey(Profile, on_delete = models.CASCADE, default = None, null = True)
     id = models.AutoField(primary_key = True, null = False)
 
