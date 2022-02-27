@@ -18,7 +18,7 @@ class Profile(models.Model):
     banner_picture = models.ImageField(default = 'bg_image.png', upload_to = "img/%y", null = True, blank = True)
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f'{self.user.username}'
 
 
 

@@ -166,63 +166,7 @@ body {
   margin: 0 auto;
 }
 
-/*  -------------------------------------------ICON SWITCHES---------------------------------------- */
-.icons-section {
-  width: 64%;
-  margin: auto;
-  border-top: 2px solid gray;
-  border-bottom: 2px solid grey;
-  overflow: hidden;
-  padding: 12px 0;
-}
 
-.icon-container {
-  position: relative;
-  width: 96%;
-  margin: auto;
-  z-index: 2;
-}
-
-.icons-section-flexbox {
-  display: flex;
-  margin: auto 10px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.line {
-  width: 50px;
-  height: 2px;
-  border: none;
-  background-color: #121212;
-  position: absolute;
-  left: 0;
-  top: 100%;
-  transition: left 0.3s ease-in;
-}
-
-.icons-section-flexbox div i {
-  font-size: 30px;
-  cursor: pointer;
-}
-
-/* -- -----------------------------------------ALBUM SECTION---------------------------------------- -- */
-.album-section {
-  width: 60%;
-  min-height: 240px;
-  border-bottom: 2px solid grey;
-  margin: auto;
-  padding: 8px;
-}
-
-/* - -----------------------------------------SINGLE SECTION---------------------------------------- - */
-.single-section {
-  width: 64%;
-  min-height: 240px;
-  border-bottom: 2px solid grey;
-  margin: auto;
-  padding: 8px;
-}
 
 /*----------------- Mobile-Search ------------------*/
 
@@ -288,6 +232,123 @@ body {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+
+/* -- -----------------------------------------ALBUM SECTION---------------------------------------- -- */
+.album-section {
+  width: 60%;
+  min-height: 240px;
+  border-bottom: 2px solid grey;
+  margin: auto;
+  padding: 8px;
+}
+
+.myImg {
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.padding-0{
+    padding-right:9px;
+    padding-left:9px;
+    padding-top:15px;
+}
+/* - -----------------------------------------SINGLE SECTION---------------------------------------- - */
+.single-section {
+  width: 64%;
+  min-height: 240px;
+  border-bottom: 2px solid grey;
+  margin: auto;
+  padding: 8px;
+}
+/* - -----------------------------------------Tab-Section- ----------------------------------------- - */
+
+.ai-content {
+  width: 64%;
+  margin: auto;
+  position: relative;
+}
+
+.ai-tabs__tab-header {
+  border-top: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.ai-tabs__tab-header ul {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  align-items: center;
+}
+
+.ai-tabs__tab-header ul li {
+  text-align: center;
+  padding: 0 10px;
+}
+
+.ai-tabs__tab-header ul li a {
+  font-size: 26px;
+  color: #121212;
+}
+
+.ai-tabs__line-container {
+  display: block;
+  height: 4px;
+  position: relative;
+  width: 100%;
+}
+
+.ai-tabs__line {
+  height: 2px;
+  background: #121212;
+  position: absolute;
+  width: 100px;
+  margin: 0 auto;
+  transition: 0.25s ease;
+  top: -2.5px;
+}
+
+.ai-tabs__content {
+  display: none;
+    border-bottom: 2px solid grey;
+}
+
+.ai-tabs__content.ai-tabs__content--active {
+  display: block;
+}
+
+/* Responsive Media Queries */
+
+@media (max-width: 820px) {
+  .profile-section {
+    width: 80%;
+  }
+
+  .ai-content {
+    width: 80%;
+  }
+}
+
+@media (max-width: 560px) {
+  .profile-section {
+    width: 95%;
+  }
+
+  .ai-content {
+    width: 95%;
+  }
+
+  .ai-tabs__tab-header ul {
+    padding: 0;
+  }
+}
+
+
 
 .overlay button:hover {
   background: #bbb;

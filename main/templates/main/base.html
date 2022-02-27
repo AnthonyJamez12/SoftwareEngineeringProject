@@ -38,19 +38,18 @@
             <span class="header-icon"><a class = "active" href="{% url 'profile' user %}"><i class="far fa-user"></i></span></a>
             <span class="header-icon"><a class = "active" href="{% url 'profile_uploads' %}"><i class="far fa-plus-square"></i></span></a>
 
-          <span onclick="openSearch()" class="header-icon desktop-hide"
-            ><i class="far fa-search"></i
-          ></span>
-          <div class="search-field">
-            <input
-              type="search"
-              name="search"
-              id="search"
-              placeholder="Search Here"
-            />
-            <i class="search-icon far fa-search"></i>
-          </div>
+          <form onclick="openSearch()" class="header-icon desktop-hide " onsubmit="return executeQuery(); "><input  type="text" class="form-control" name="q" id="id_q_small" ><i class="far fa-search"></i></form>
+
+
+          <form class="search-field" onsubmit="return executeQuery();">
+              <input type="text" class="form-control" name="q" id="id_q_small" placeholder="Search...">
+                <i class="search-icon far fa-search"></i>
+          </form>
+
         </div>
+
+
+
         <form action = "{% url 'logout' %}" method = "post">
             {% csrf_token %}
             <div class="d-flex justify-content-center mt-3 login_container">
@@ -73,9 +72,7 @@
 
         <!-- -------------------------------HEADER RIGHT FLEXBOX----------------------------------- -->
         <div class="header-right-image">
-
         <img src="{{ profile.profile_picture.url }}"  alt="profile-pic" class="header-right-image"/>
-    
         </div>
       </div>
     </div>
@@ -95,6 +92,29 @@
 
 
     {% block javascript %}
+    <script type="text/javascript">
+	function executeQuery() {
+		var query = ""
+		query = document.getElementById('id_q_small').value;
+		if (query == ""){
+			query = document.getElementById('id_q_large').value;
+		}
+	    window.location.replace("{% url 'search' %}?q=" + query)
+	    return false
+	}
+
+
+    // program for search bar animation
+    function openSearch() {
+      document.getElementById('myOverlay').style.display = 'block';
+    }
+
+    function closeSearch() {
+      document.getElementById('myOverlay').style.display = 'none';
+    }
+
+
+    </script>
     {% endblock %}
 
 
