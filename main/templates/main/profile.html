@@ -72,7 +72,7 @@
                   <h2>Albums</h2>
                   {% for x in img %}
                   {% if forloop.first %}<div class="row ">{% endif %}
-                  <div class="col-sm-4 padding-0" >
+                  <div class="col-4 padding-0" >
                       <div class="text-center ">
                           <a href="{% url 'single_page' x.id %}" ><img src="{{x.file.url}}" href="{% url 'single_page' x.id %}"  class="myImg"></a>
                       </div>
