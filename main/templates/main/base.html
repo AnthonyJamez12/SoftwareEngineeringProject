@@ -38,7 +38,8 @@
             <span class="header-icon"><a class = "active" href="{% url 'profile' user %}"><i class="far fa-user"></i></span></a>
             <span class="header-icon"><a class = "active" href="{% url 'profile_uploads' %}"><i class="far fa-plus-square"></i></span></a>
 
-          <form onclick="openSearch()" class="header-icon desktop-hide " onsubmit="return executeQuery(); "><input  type="text" class="form-control" name="q" id="id_q_small" ><i class="far fa-search"></i></form>
+          <form onclick="openSearch()" class="header-icon desktop-hide " >
+            <i class="far fa-search"></i></form>
 
 
           <form class="search-field" onsubmit="return executeQuery();">
@@ -63,8 +64,9 @@
             >×</span
           >
           <div class="overlay-content">
-            <form>
-              <input type="text" placeholder="Search Here" name="search" />
+            <form onsubmit="return executeQueryPhone();">
+                {% csrf_token %}
+              <input  type="text" class="form-control" name="q" id="id_q_small" placeholder="Search..." >
               <button type="submit"><i class="fa fa-search"></i></button>
             </form>
           </div>
@@ -103,6 +105,15 @@
 	    return false
 	}
 
+    function executeQueryPhone() {
+		var query = ""
+		query = document.getElementById('id_q_small').value;
+		if (query == ""){
+			query = document.getElementById('id_q_large').value;
+		}
+	    window.location.replace("{% url 'search' %}?q=" + query)
+	    return false
+	}
 
     // program for search bar animation
     function openSearch() {
