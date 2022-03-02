@@ -36,7 +36,7 @@
         <!-- -------------------------------HEADER LEFT FLEXBOX----------------------------------- -->
         <div class="header-left-flexbox">
             <span class="header-icon"><a class = "active" href="{% url 'profile' user %}"><i class="far fa-user"></i></span></a>
-            <span class="header-icon"><a class = "active" href="{% url 'profile_uploads' %}"><i class="far fa-plus-square"></i></span></a>
+            <span class="header-icon"><a class = "active" href="{% url 'profile_uploads'  %}"><i class="far fa-plus-square"></i></span></a>
 
           <form onclick="openSearch()" class="header-icon desktop-hide " >
             <i class="far fa-search"></i></form>
@@ -51,13 +51,22 @@
 
 
 
-        <form action = "{% url 'logout' %}" method = "post">
+
+        {% if request.user.is_authenticated %}
+        <form action = "{% url 'register' %}" method = "post">
             {% csrf_token %}
             <div class="d-flex justify-content-center mt-3 login_container">
                 <input class="btn login_btn" type="submit" value="Logout">
             </div>
         </form>
-
+        {% else %}
+        <form action = "{% url 'register' %}" method = "post">
+            {% csrf_token %}
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <input class="btn login_btn" type="submit" value="Register">
+            </div>
+        </form>
+        {% endif %}
         <!-- -------------------------------Mobile Search Box----------------------------------- -->
         <div id="myOverlay" class="overlay">
           <span class="closebtn" onclick="closeSearch()" title="Close Overlay"

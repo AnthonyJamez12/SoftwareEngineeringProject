@@ -34,6 +34,7 @@
         </div>
         <p class="name">{{profile.user}}</p>
         <p class="about">{{ profile.bio | default_if_none:""  }}</p>
+        <a href="{% url 'profile_settings' user %}" class = "edit_profile_link"><button class="edit-profile-btn">Edit Profile</button></a>
       </div>
     </div>
 
