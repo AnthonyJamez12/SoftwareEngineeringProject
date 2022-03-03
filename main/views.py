@@ -104,9 +104,24 @@ def single_page(request, id):
     return render(request, "main/single_page.html", context)
 
 
+
+def single_page_visit(request, id):
+    img = Uploads.objects.filter(id = id).first()
+    profile = Uploads.objects.filter(id = request.user.id)
+
+    context = { "img": img, "profile": profile}
+
+    return render(request, "main/single_page_visit.html", context)
+
+
+
+
 def delete_photo(request, id):
     if request.method == 'POST':
         img = Uploads.objects.get(id = id)
         img.delete()
 
     return redirect(reverse("profile", args=[request.user]))
+
+def make_account(request):
+    return render(request, "main/make_account.html", )

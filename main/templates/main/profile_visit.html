@@ -34,7 +34,6 @@
         </div>
         <p class="name">{{profile.user}}</p>
         <p class="about">{{ profile.bio | default_if_none:""  }}</p>
-        <a href="{% url 'profile_settings' user %}" class = "edit_profile_link"><button class="edit-profile-btn">Edit Profile</button></a>
       </div>
     </div>
 
@@ -74,7 +73,7 @@
                   {% if forloop.first %}<div class="row ">{% endif %}
                   <div class="col-4 col-4 col-4" >
                       <div class="text-center mt-2">
-                          <a href="{% url 'single_page' x.id %}" ><img src="{{x.file.url}}" href="{% url 'single_page' x.id %}" height="100%" width="100%"  class="myImg"></a>
+                          <a href="{% url 'single_page_visit' x.id %}" ><img src="{{x.file.url}}" href="{% url 'single_page_visit' x.id %}" height="100%" width="100%"  class="myImg"></a>
                       </div>
                    </div>
                       {% if forloop.counter|divisibleby:3 %}

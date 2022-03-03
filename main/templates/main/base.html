@@ -35,8 +35,13 @@
       <div class="header-flexbox">
         <!-- -------------------------------HEADER LEFT FLEXBOX----------------------------------- -->
         <div class="header-left-flexbox">
+            {% if request.user.is_anonymous %}
+            <span class="header-icon"><a class = "active" href="{% url 'make_account'  %}"><i class="far fa-user"></i></span></a>
+            {% else %}
             <span class="header-icon"><a class = "active" href="{% url 'profile' user %}"><i class="far fa-user"></i></span></a>
             <span class="header-icon"><a class = "active" href="{% url 'profile_uploads'  %}"><i class="far fa-plus-square"></i></span></a>
+            
+            {% endif %}
 
           <form onclick="openSearch()" class="header-icon desktop-hide " >
             <i class="far fa-search"></i></form>
@@ -50,23 +55,23 @@
         </div>
 
 
-
-
-        {% if request.user.is_authenticated %}
-        <form action = "{% url 'register' %}" method = "post">
-            {% csrf_token %}
-            <div class="d-flex justify-content-center mt-3 login_container">
-                <input class="btn login_btn" type="submit" value="Logout">
-            </div>
-        </form>
-        {% else %}
+        {% if request.user.is_anonymous %}
         <form action = "{% url 'register' %}" method = "post">
             {% csrf_token %}
             <div class="d-flex justify-content-center mt-3 login_container">
                 <input class="btn login_btn" type="submit" value="Register">
             </div>
         </form>
+        {% else %}
+        <form action = "{% url 'logout' %}" method = "post">
+            {% csrf_token %}
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <input class="btn login_btn" type="submit" value="Logout">
+            </div>
+        </form>
         {% endif %}
+
+
         <!-- -------------------------------Mobile Search Box----------------------------------- -->
         <div id="myOverlay" class="overlay">
           <span class="closebtn" onclick="closeSearch()" title="Close Overlay"
@@ -83,7 +88,7 @@
 
         <!-- -------------------------------HEADER RIGHT FLEXBOX----------------------------------- -->
         <div class="header-right-image">
-        <img src="{{ profile.profile_picture.url }}"  alt="profile-pic" class="header-right-image"/>
+        <img src="{{ user.profile.profile_picture.url }}"  alt="profile-pic" class="header-right-image"/>
         </div>
       </div>
     </div>
