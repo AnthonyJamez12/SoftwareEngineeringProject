@@ -1,0 +1,83 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<link href= "{% static 'css/profile.css' %}" rel="stylesheet">
+<body>
+
+<div class="container">
+    <div class="row ">
+        <div class=".col">
+            {% for x in profile %}
+                <img src="{{ x.profile_picture.url }}" alt="" class="profile_pic" height= 250px width = 250px>
+            {% endfor %}
+
+        </div>
+        <div class=".col">
+            <h2 class="h2-responsive">{{user}}</h2>
+            <a href="{% url 'profile_settings' user %}" class = "edit_profile_link"><button class = "edit_profile_button" type="button" >Edit Profile</button></a>
+            {% for x in profile %}
+            <p>{{ x.first_name | default_if_none:"" }} {{ x.last_name  | default_if_none:""}}</p>
+            <p>{{ x.bio | default_if_none:""  }} </p>
+            {% endfor %}
+        </div>
+    </div>
+<hr>
+    <div class="row ">
+        <div class="container">
+            {% for x in img %}
+            {% if forloop.first %}<div class="row ">{% endif %}
+                <div class="col-lg-4 col-md-4 col-12" >
+            <div class="text-center mt-2">
+                    <a href="{% url 'single_page' x.id %}" class = "edit_profile_link"><img src="{{x.file.url}}" height="100%" width="100%"  class="myImg"></a>
+            </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class=row>{% endif %}
+                {% if forloop.last %}</div>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<script>
+
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = $('.myImg');
+    var modalImg = $("#img01");
+    var captionText = $("#caption");
+    $('.myImg').click(function(){
+        modal.style.display = "block";
+        var newSrc = this.src;
+        var newAlt = this.innerHTML;
+        modalImg.attr('src', newSrc);
+        captionText.attr('innerHTML', newAlt);
+    });
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+</script>
+
+
+
+
+{% endblock %}
+</body>

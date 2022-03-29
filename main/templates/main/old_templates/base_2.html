@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Social Media</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="description" content="Instagram Clone">
+    <meta name="keywords" content="Anthony, Humphreys, Instagram, Clone, Im Cool">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Anthony Humphreys</title>
+    <link href="" type="image/png" rel="icon">
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href= "{% static 'css/main.css' %}" rel="stylesheet">
+    <link href= "{% static 'css/profile.css' %}" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm bg-light">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class = "active" href="{% url 'profile' user %}"><i class="fa fa-fw fa-user-circle"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class = "active" href="/hello_world"><i class="fa fa-fw fa-home"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class = "active" href="{% url 'profile_uploads' %}"><i class="fa fa-fw fa-camera"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class = "active" href="#"><i class="fa fa-fw fa-search"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class = "active" href="#"><i class="fa fa-fw fa-envelope"></i></a>
+        </li>
+    </ul>
+    <form action = "{% url 'logout' %}" method = "post">
+        {% csrf_token %}
+        <div class="d-flex justify-content-center mt-3 login_container">
+            <input class="btn login_btn" type="submit" value="Logout">
+        </div>
+    </form>
+
+</nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/cropper.min.js' %}"></script>
+
+
+
+
+
+    {% block javascript %}
+    {% endblock %}
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Social Media</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="description" content="Instagram Clone">
+    <meta name="keywords" content="Anthony, Humphreys, Instagram, Clone, Im Cool">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Anthony Humphreys</title>
+    <link href="" type="image/png" rel="icon">
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href= "{% static 'css/main.css' %}" rel="stylesheet">
+    <link href= "{% static 'css/profile.css' %}" rel="stylesheet">
+    <link href= "{% static 'css/style.css' %}" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+</head>
+
+<body>
+
+    <div class="header-container" id="header-container">
+      <div class="header-flexbox">
+        <!-- -------------------------------HEADER LEFT FLEXBOX----------------------------------- -->
+        <div class="header-left-flexbox">
+          <span class="header-icon"><i class="far fa-user"><a class = "active" href="{% url 'profile' user %}"><i class="fa fa-fw fa-user-circle"></i></span>
+          <span class="header-icon"><i class="far fa-plus-square"><a class = "active" href="{% url 'profile_uploads' %}"></i></span>
+          <span onclick="openSearch()" class="header-icon desktop-hide"
+            ><i class="far fa-search"></i
+          ></span>
+          <div class="search-field">
+            <input
+              type="search"
+              name="search"
+              id="search"
+              placeholder="Search Here"
+            />
+            <i class="search-icon far fa-search"></i>
+          </div>
+        </div>
+        <form action = "{% url 'logout' %}" method = "post">
+            {% csrf_token %}
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <input class="btn login_btn" type="submit" value="Logout">
+            </div>
+        </form>
+
+        <!-- -------------------------------Mobile Search Box----------------------------------- -->
+        <div id="myOverlay" class="overlay">
+          <span class="closebtn" onclick="closeSearch()" title="Close Overlay"
+            >×</span
+          >
+          <div class="overlay-content">
+            <form>
+              <input type="text" placeholder="Search Here" name="search" />
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+
+        <!-- -------------------------------HEADER RIGHT FLEXBOX----------------------------------- -->
+
+
+      </div>
+    </div>
+
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/cropper.min.js' %}"></script>
+    <script src="{% static 'js/sript.js' %}"></script>
+
+
+
+
+
+    {% block javascript %}
+    {% endblock %}
+
+
+</body>
+</html>
