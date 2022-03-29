@@ -26,7 +26,7 @@ def register(request):
         form = RegisterForm()
 
 
-    return render(request, "register/register.html", {"form": form})
+    return render(request, "register/register.html", {"form": form, "title": "Login"})
 
 
 

@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans+Condensed:wght@300&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, "Helvetica Neue", Arial, "Lucida Grande", sans-serif;
+  overflow-x: hidden;
+}
+
+.main-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.main-flexbox {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+/* -------------------------------------LEFT IMAGE FLEXBOX--------------------------------------------*/
+.left-image-flexbox {
+  width: 73%;
+  height: 100%;
+  background-image: url("/static/images/Website Height.dadeb9d71cc1.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* -------------------------------------RIGHT FORM FLEXBOX--------------------------------------------*/
+.right-form {
+  display: flex;
+  flex-direction: column;
+  width: 27%;
+  height: 100vh;
+}
+.item1-flexbox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: #363636;
+}
+
+/*  -------------------------------------RADIO IMAGE---------------------------------------- */
+.radio-image {
+  background-image: url("/static/images/ARMSJARB Radio Logo.5a23464b3b9c.png");
+  width: 45%;
+  height: 200px;
+  background-position: bottom;
+  background-size: 95%;
+  background-repeat: no-repeat;
+}
+
+/*  ------------------------------------HEADING------------------------------------------- */
+h1 {
+    text-align: center;
+  margin: 0;
+  font-weight: bold;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+/* -------------------------------------FORM SECTION------------------------------------------ */
+.form-section {
+  width: 70%;
+}
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-fields {
+  position: relative;
+  margin: 7px 0;
+}
+.input-fields input {
+  padding: 8px 18px;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 8px;
+  color: #363636;
+  outline: none;
+  border: 1px solid #224952;
+  width: 100%;
+}
+
+label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 0;
+  font-size: 16px;
+  cursor: text;
+  transform: translate(18px, 11px);
+  transition: transform 0.4s ease-in;
+}
+
+input:focus {
+  border: 3px solid #00bfff;
+}
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label,
+.input:not(:focus) ~ label {
+  transform: translate(12px, -7px);
+  font-weight: bold;
+  font-size: 14px;
+  background-color: white;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.buttons button {
+  background-color: #f7c84c;
+  padding: 8px 0;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  color: #363636;
+  margin: 10px 12px;
+  box-shadow: 2px 3px 10px 5px rgba(167, 167, 167, 0.5);
+  width: 90px;
+}
+
+.buttons button:hover {
+  cursor: pointer;
+}
+/*  -------------------------------------Login Link---------------------------------------- */
+.register-link{
+    margin-top: 20px;
+}
+
+.login-link{
+    margin-top: 20px;
+}
+/*  -------------------------------------SOCIAL MEDIA SECTION---------------------------------------- */
+.social-media-icons {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.social-media-icons a div {
+  width: 34px;
+  height: 34px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 0 8px;
+}
+
+.facebook {
+  background-image: url("/static/images/Face Book Icon.a333bd430a3f.png");
+  width: 44px !important;
+  height: 44px !important;
+  margin-top: -7px !important ;
+}
+
+.instagram {
+  background-image: url("/static/images/Instagram Icon.26b65b3c6922.png");
+}
+.twitter {
+  background-image: url("/static/images/Twitter Icon.6918db95c0f5.png");
+}
+
+/* -------------------------------------FOOTER CONTAINER-------------------------------------- - */
+.footer-items-container {
+  width: 100%;
+  height: fit-content;
+}
+.footer-items-flex {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+/* -------------------------------------------------------------------- */
+@media screen and (max-width: 1050px) and (min-width: 768px) {
+  h1 {
+    font-size: 30px;
+  }
+  .left-image-flexbox {
+    width: 68%;
+  }
+
+  .right-form {
+    width: 32%;
+  }
+
+  .buttons button {
+    padding: 8px 0;
+    font-size: 16px;
+    margin: 8px 12px;
+    width: 80px;
+  }
+  label {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-flexbox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* -------------------------------------LEFT IMAGE FLEXBOX--------------------------------------------*/
+  .left-image-flexbox {
+    display: none;
+  }
+
+  /* -------------------------------------RIGHT FORM FLEXBOX--------------------------------------------*/
+  .right-form {
+    width: 100%;
+  }
+
+  /*  -------------------------------------RADIO IMAGE---------------------------------------- */
+  .radio-image {
+    height: 180px;
+    background-position: bottom;
+    background-size: contain;
+  }
+  .footer-items-flex {
+    justify-content: space-around;
+    margin-top: 50px;
+  }
+}

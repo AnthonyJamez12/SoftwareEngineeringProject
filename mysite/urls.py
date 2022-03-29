@@ -14,22 +14,41 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from register import views as v
+from register import *
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from main.views import *
 
 admin.site.site_header = 'Proton Admin'
 admin.site.site_title = 'Proton Admin'
 
+from register.views import(
+    register,
+    logout,
+    
+)
+
+from main.views import (
+    home,
+    profile,
+    profile_view,
+    profile_search_view,
+    profile_uploads,
+    profile_settings,
+    single_page,
+    delete_photo,
+    make_account,
+)
 
 urlpatterns = [
     path('', include("main.urls")),
     path('', include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
-    path('register/', v.register, name = "register"),
-    path('logout/', v.logout, name = "logout"),
+    path('register/', register, name = "register"),
+    path('logout/', logout, name = "logout"),
+    path('api/main/', include('main.urls')),
 
 ]
 

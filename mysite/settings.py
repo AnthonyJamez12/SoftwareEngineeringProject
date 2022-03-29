@@ -26,7 +26,7 @@ SECRET_KEY = 'l6_b*e8#okbil%3^vk!bupv&hf*b+gysf+=3^jydyx!!3y^*)4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 #Was True before
-ALLOWED_HOSTS = ['proton-joy.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['proton-joy.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
     'main.apps.MainConfig',
     'register.apps.RegisterConfig',
     'storages',
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -143,10 +146,30 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
 
+CORS_ORIGIN_ALLOW_ALL = True # any website has access to my api
+CORS_URLS_REGEX = r'^/api/.*$'
+
 STATICFILE_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 
 ]
+
+DEFAULT_RENDERER_CLASSES = [
+        'rest_framework.renderers.JSONRenderer',
+    ]
+
+if DEBUG:
+    DEFAULT_RENDERER_CLASSES += [
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication'
+    ],
+    'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES
+}
+
 
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
