@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href= "{% static 'js/sript.js' %}" rel="stylesheet">
+    <title>Movie List</title>
+   
+  </head>
+  <body>
+
+
+    <!-- -------------------------------------PROFILE SECTION------------------------------------------ -->
+    
+    {% for movie in movies %}
+    <div>
+        <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
+        <h2>{{ movie.title }}</h2>
+        <p>{{ movie.synopsis }}</p>
+        <p>Runtime: {{ movie.hourTime }} hours {{ movie.minuteTime }} minutes</p>
+        <p>Age rating: {{ movie.get_age_rating_display }}</p>
+        <p>Cast:</p>
+        <ul>
+            {% for cast_member in movie.cast_members.all %}
+                <li>{{ cast_member.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+
+    <!-- Tab-Section -->
+    <div class="button-group" style=" ">
+      <a href="{% url 'movie list' %}" class="edit-album-btn" style="">Browse Current Movies Catolog</a>
+      <a href="" class="delete-album-btn" style="">Browse Upcoming Movies Catolog</a>
+    </div>
+    
+
+    <!-- ----------------------------------------------END------------------------------------------- -->
+
+  </body>
+
+{% endblock %}
+</html>

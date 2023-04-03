@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href= "{% static 'css/style.css' %}" rel="stylesheet">
+    <link href= "{% static 'js/sript.js' %}" rel="stylesheet">
+    <title>Profile Page</title>
+  </head>
+  <body>
+
+
+    <div class="container">
+        <h1>Write a Review</h1>
+        <form method="post" class="form-group">
+          {% csrf_token %}
+          <label for="review">Your Review:</label>
+          <textarea name="review" id="review" class="form-control" rows="5"></textarea>
+          <br>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+
+
+
+    <!-- ----------------------------------------------END------------------------------------------- -->
+
+  </body>
+  {% endblock content %}
