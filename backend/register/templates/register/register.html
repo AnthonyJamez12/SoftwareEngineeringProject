@@ -25,7 +25,7 @@
             <!-- -------------------------------------HEADING-------------------------------------------->
             <h1>Join the Family <br> Today!</h1>
 
-            <!-- -------------------------------------FORM SECTION------------------------------------------->
+            
             <div class="form-section">
               <form method="POST" action="#" autocomplete="off">
                   {% csrf_token %}
@@ -37,6 +37,12 @@
                 <div class="input-fields">
                   <input type="email" id="email" placeholder=" "  {{form.email}}
                   <label for="email">Email </label>
+                </div>
+
+
+                <div class="input-fields">
+                  <input type="Home Address" id="Home Address" placeholder=" " />
+                  <label for="Home Address">Home Address </label>
                 </div>
 
                 <div class="input-fields">
@@ -60,11 +66,7 @@
               </form>
             </div>
             <!-- -------------------------------------SOCIAL MEDIA SECTION---------------------------------------->
-            <div class="social-media-icons">
-              <a href="#"><div class="facebook"></div></a>
-              <a href="#"><div class="instagram"></div></a>
-              <a href="#"><div class="twitter"></div></a>
-            </div>
+     
             <div class="register-link">
                 Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
             </div>

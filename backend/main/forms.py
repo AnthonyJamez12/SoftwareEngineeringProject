@@ -9,7 +9,7 @@ from django.core.validators import RegexValidator
 class Profile_Form(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ("first_name", "last_name", "phone", "email", "bio", "profile_picture", "banner_picture")
+        fields = ("first_name", "last_name", "phone", "email", "home_address", "bio", "profile_picture", "banner_picture")
 
 
 class Uploads_Form(forms.ModelForm):
@@ -47,5 +47,5 @@ class BookingForm(forms.ModelForm):
 
 class CreditCardForm(forms.ModelForm):
     class Meta:
-        model = CreditCard
+        model = CreditCardNumberr
         fields = ['name', 'card_number', 'card_expiry', 'card_cvv', ]

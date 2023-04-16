@@ -25,7 +25,7 @@
             <!-- -------------------------------------HEADING-------------------------------------------->
             <h1>Sign Up Today</h1>
 
-            <!-- -------------------------------------FORM SECTION------------------------------------------->
+          
             <div class="form-section">
               <form method="POST" action="#" autocomplete="off">
                   {% csrf_token %}
@@ -42,18 +42,14 @@
                   <label for="password">Password</label>
                 </div>
 
-                <!-- -------------------------------------BUTTONS-------------------------------------------->
+     
                 <div class="buttons">
                     <button type="submit" value="Login">Login</button>
                 </div>
               </form>
             </div>
             <!-- -------------------------------------SOCIAL MEDIA SECTION---------------------------------------->
-            <div class="social-media-icons">
-              <a href="#"><div class="facebook"></div></a>
-              <a href="#"><div class="instagram"></div></a>
-              <a href="#"><div class="twitter"></div></a>
-            </div>
+       
 			<div class="login-link">
 				Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
 			</div>

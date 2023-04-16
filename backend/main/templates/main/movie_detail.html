@@ -1,9 +1,9 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
+{% block content %}
 
 
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,12 +15,14 @@
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
     <link href= "{% static 'css/style.css' %}" rel="stylesheet">
     <link href= "{% static 'js/sript.js' %}" rel="stylesheet">
     <title>Profile Page</title>
   </head>
-  {% block content %}
+
   <body>
     <div class="container" style="font-family: 'Open Sans', sans-serif; background-color:  #f1f1f1;">
       <div class="row">

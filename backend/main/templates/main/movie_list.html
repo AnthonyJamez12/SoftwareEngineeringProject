@@ -20,32 +20,117 @@
     <title>Movie List</title>
    
   </head>
+  <style>
+	  .header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .movie {
+      box-sizing: border-box;
+      width: 45%;
+      margin: 1.5%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
+  
+    .movie img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  
+    .title-container {
+      position: absolute;
+      top: 50%;
+      left: 70%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  
+    .user-container {
+      margin-top: 10px;
+    }
+  
+    .username {
+      margin: 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  
+    .message {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+  
+    @media only screen and (max-width: 768px) {
+      .movie {
+        width: 90%;
+      }
+    }
+	</style>
   <body>
 
 
     <!-- -------------------------------------PROFILE SECTION------------------------------------------ -->
     
-    {% for movie in movies %}
     <div>
-        <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
-        <h2>{{ movie.title }}</h2>
-        <p>{{ movie.synopsis }}</p>
-        <p>Runtime: {{ movie.hourTime }} hours {{ movie.minuteTime }} minutes</p>
-        <p>Age rating: {{ movie.get_age_rating_display }}</p>
-        <p>Cast:</p>
-        <ul>
-            {% for cast_member in movie.cast_members.all %}
-                <li>{{ cast_member.name }}</li>
-            {% endfor %}
-        </ul>
+      <div class="header">Movies out now!</div>
+      <div class="container">
+        {% if movies %}
+          {% for movie in movies %}
+            <div class="movie">
+              <a href="{% url 'movie_detail' movie_id=movie.id %}">
+                <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
+              </a>
+              <div class="title-container">
+                <h4 >{{ movie.title }}</h4>
+              </div>
+              <a href="">
+                <div class="user-container">
+                  <h4 class="username">{{ profile.0.user }}</h4>
+                  {% if profile.1 %}
+                  <p class="message"><a href="#" onclick="createOrReturnPrivateChat('{{profile.0.id}}')">Send a Message</a></p>
+                  {% endif %}
+                </div>
+              </a>
+            </div>
+            {% if forloop.counter|divisibleby:2 %}
+              <div style="clear:both;"></div>
+            {% endif %}
+          {% endfor %}
+        {% else %} <!-- If no friends -->
+          <div>
+            <p>No results</p>
+          </div>
+        {% endif %}
+      </div>
     </div>
-    {% endfor %}
+  
 
     <!-- Tab-Section -->
-    <div class="button-group" style=" ">
-      <a href="{% url 'movie list' %}" class="edit-album-btn" style="">Browse Current Movies Catolog</a>
-      <a href="" class="delete-album-btn" style="">Browse Upcoming Movies Catolog</a>
-    </div>
+
     
 
     <!-- ----------------------------------------------END------------------------------------------- -->

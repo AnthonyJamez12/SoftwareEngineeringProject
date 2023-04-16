@@ -51,7 +51,7 @@ body {
 
 /*  -------------------------------------RADIO IMAGE---------------------------------------- */
 .radio-image {
-  background-image: url("/static/images/ARMSJARB Radio Logo.png");
+  background-image: url("/static/images/tv.png");
   width: 45%;
   height: 200px;
   background-position: bottom;

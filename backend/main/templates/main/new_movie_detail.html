@@ -1,9 +1,9 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-
 {% block content %}
-<!DOCTYPE html>
+
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,25 +15,52 @@
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
     <link href= "{% static 'css/style.css' %}" rel="stylesheet">
     <link href= "{% static 'js/sript.js' %}" rel="stylesheet">
     <title>Profile Page</title>
   </head>
+
   <body>
+    <div class="container" style="font-family: 'Open Sans', sans-serif; background-color:  #f1f1f1;">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="movie">
+           
+              <img src="{{ new_movie.image.url }}" alt="{{ new_movie.title }}" class="movie__image" style="height: 400px; display: block; margin: 20px; border: 2px solid black; border-radius: 8px;">
+        
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="movie__details" style="flex: 1; display: flex; flex-wrap: wrap;">
+            <div class="movie__section" style="width: 100%; margin-bottom: 20px;">
+              <h2 class="movie__title" style="font-size: 2.5rem; margin-bottom: 10px;">{{ new_movie.title }}</h2>
+            </div>
+            <div class="movie__section" style="margin-bottom: 20px;">
+              <p class="movie__synopsis" style="font-size: 1.2rem;"></strong>{{ new_movie.synopsis }}</p>
+            </div>
+            <div class="movie__section" style="margin-bottom: 10px;">
+              <p class="movie__duration" style="font-size: 1.1rem;"><strong>Duration:</strong> {{ new_movie.hourTime }} hours {{ new_movie.minuteTime }} minutes</p>
+            </div>
+            <div class="movie__section" style="margin-bottom: 10px;">
+              <p class="movie__rating" style="font-size: 1.1rem;"><strong>Age rating:</strong> {{ new_movie.age_rating }}</p>
+            </div>
+            <div class="movie__section" style="margin-bottom: 10px;">
+              <p class="movie__cast" style="font-size: 1.1rem;"><strong>Cast:</strong> {{ new_movie.cast }}</p>
+            
+            </div>
+           
+          </div>
+        </div>
+      </div>
+     
+      
+      </div>
+    </div>
 
 
-    <!-- -------------------------------------PROFILE SECTION------------------------------------------ -->
-    <p>{{ new_movie.synopsis }}</p>
-    <p>Duration: {{ new_movie.hourTime }} hours {{ new_movie.minuteTime }} minutes</p>
-    <p>Age rating: {{ new_movie.age_rating }}</p>
-    <p>Cast: {{ new_movie.cast }}</p>
-    <img src="{{ new_movie.image.url }}" alt="{{ new_movie.title }}">
-    
-
-
-
-    <!-- ----------------------------------------------END------------------------------------------- -->
-
+    <script src="{% static 'js/script.js' %}"></script>
   </body>
-  {% endblock content %}
+{% endblock content %}

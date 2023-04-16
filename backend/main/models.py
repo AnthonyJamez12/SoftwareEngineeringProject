@@ -14,7 +14,7 @@ class Profile(models.Model):
     address = models.CharField(max_length=100, null = True, blank = True)
     phone = models.CharField(max_length = 50, null = True, blank = True)
     email = models.EmailField(max_length = 50, null = True, blank = True)
-
+    home_address = models.CharField(max_length = 50, null = True, blank = True)
     bio = models.TextField(max_length = 300, null = True, blank = True)
     profile_picture = models.ImageField(default = 'default.png', upload_to = "img/%y", null = True, blank = True)
     banner_picture = models.ImageField(default = 'bg_image.png', upload_to = "img/%y", null = True, blank = True)
@@ -141,15 +141,15 @@ class Booking(models.Model):
 
 
 
-class CreditCard(models.Model):
+class CreditCardNumberr(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=16, null = False, blank = False,)
     card_number = models.IntegerField(max_length=16, null = False, blank = False,)
-    card_expiry = models.IntegerField(max_length=4,  null = False, blank = False,)
+    card_expiry = models.DateField(max_length=16, null = False, blank = False,)
     card_cvv = models.IntegerField(max_length=3, null = False, blank = False,)
 
 
     def __str__(self):
-        return f'{self.user.username} - {self.card_number}'
+        return f'{self.user.username} - {self.card_number} - {self.card_expiry}'
 
     

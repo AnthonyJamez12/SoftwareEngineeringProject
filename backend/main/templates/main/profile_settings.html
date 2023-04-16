@@ -30,25 +30,25 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
 
-<main role="main" class="container" style="padding-top: 10px;">
-	<div class="row">
-		<div class="col-md-6" style="height: 50%; margin: auto;">
-            <a href="{% url 'profile' user  %}" class = "edit_profile_link"><button class = "edit_profile_button" type="button" >Back To Profile</button></a>
-			<form method="POST" enctype="multipart/form-data" id="post-form" style="margin-bottom: 20px; border: 2px solid grey; padding: 30px 20px;">
+	<main role="main" class="container" style="padding-top: 10px;">
+		<div class="row">
+		  <div class="col-md-6 mx-auto">
+			<a href="{% url 'profile' user  %}" class="btn btn-outline-secondary mb-3"><i class="fa fa-chevron-left mr-2"></i> Back to Profile</a>
+			<form method="POST" enctype="multipart/form-data" id="post-form" style="border: 2px solid #ccc; padding: 30px 20px; border-radius: 5px;">
 			  {% csrf_token %}
 			  <fieldset class="form-group">
 				<legend class="border-bottom mb-4">Post</legend>
 				{{ form.as_p }}
 			  </fieldset>
 			  <div class="form-group">
-			  	<div id="profile_picture-box" class="profile_picture-container"></div>
-    			<button class="btn btn-outline-info" id="crop-btn" style="width: 100%; margin-top: 10px; display: none;" type="button">Crop</button>
-				<button class="btn btn-outline-info" id="confirm-btn" style="width: 100%; margin-top: 10px;" type="submit">Post</button>
+				<div id="profile_picture-box" class="profile_picture-container"></div>
+				<button class="btn btn-outline-info mt-3" id="crop-btn" style="width: 100%; display: none;" type="button">Crop</button>
+				<button class="btn btn-primary mt-3" id="confirm-btn" style="width: 100%;" type="submit">Post</button>
 			  </div>
-		    </form>
+			</form>
+		  </div>
 		</div>
-	</div>
-</main>
+	  </main>
 <script>
 	// profile_picture-box is the id of the div element that will store our cropping profile_picture preview
 	const profile_picturebox = document.getElementById('profile_picture-box')

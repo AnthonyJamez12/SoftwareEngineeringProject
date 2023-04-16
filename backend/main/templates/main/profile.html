@@ -22,88 +22,146 @@
       .profile-section {
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
-        height: 80vh;
+        align-items: center;
+        margin-top: 50px;
       }
-
+      
       .grey-section {
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
-        height: 40%;
-        background-color: #ccc;
-      }
-
-      .profile-pic {
-        position: relative;
-        top: -50px;
+        height: 500px;
+        
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 20px;
+      }
+      
+      .profile-flexbox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        max-width: 800px;
+        padding: 20px;
+        border: 1px solid #E5E5E5;
+        border-radius: 10px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .profile-pic img {
         width: 150px;
         height: 150px;
+        object-fit: cover;
         border-radius: 50%;
+        margin-bottom: 20px;
+      }
       
-
-      }
-
-      .profile-pic img {
-        width: 100%;
-        height: 100%;
-
-      }
-
-      .profile-flexbox {
-       
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 200px;
-      }
-
       .name {
-        font-size: 2rem;
-        font-weight: bold;
-        margin-top: 0px;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 10px;
       }
-
+      
       .about {
-        font-size: 1.2rem;
-        margin-top: 10px;
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: center;
+        margin-bottom: 20px;
       }
-
+      
       .edit-profile-link {
-        margin-top: 00px;
+        margin-top: 20px;
+        margin-left: -20px;
       }
-
+      
+      .edit-profile-btn {
+        padding: 10px 20px;
+        background-color: #007AFF;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+      
+      .edit-profile-btn:hover {
+        background-color: #0061B5;
+      }
+      
       .button-group {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 50px;
       }
-
-      .edit-album-btn,
-      .delete-album-btn {
+      
+      .edit-album-btn, .delete-album-btn {
         display: inline-block;
-        padding: 10px;
-        margin: 0 10px;
+        padding: 10px 20px;
+        margin-right: 20px;
+        background-color: #007AFF;
+        color: #FFFFFF;
         border: none;
         border-radius: 5px;
-        font-size: 1.2rem;
+        font-size: 16px;
         cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+      
+      .edit-album-btn:hover, .delete-album-btn:hover {
+        background-color: #0061B5;
+      }
+      
+      .booking-section {
+        width: 80%;
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #E5E5E5;
+        border-radius: 10px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .booking-section h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+      
+      .booking-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .booking-section li {
+        margin-bottom: 20px;
+      }
+      
+      .booking-section p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 5px;
+      }
+      
+      .booking-section strong {
+        font-weight: 600;
+        margin-right: 10px;
       }
 
-      .edit-album-btn {
-        background-color: black;
-        color: white;
-      }
-
-      .delete-album-btn {
-        background-color: black;
-        color: white;
+      .content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        text-align: center;
       }
     </style>
   </head>
@@ -121,8 +179,15 @@
         </div>
         <p class="name">{{user}}</p>
         <p class="about">{{ profile.bio | default_if_none:""  }}</p>
-        <a href="{% url 'profile_settings' user %}" class = "edit_profile_link"><button class="edit-profile-btn">Edit Profile</button></a>
+        <a href="{% url 'profile_settings' user %}" ><button class="edit-profile-btn">Edit Profile</button></a>
       </div>
+    </div>
+
+    <!-- -----------------------------------------ALBUM SECTION---------------------------------------- -->
+    <!-- Tab-Section -->
+    <div class="button-group" style=" ">
+      <a href="{% url 'movie list' %}" class="edit-album-btn" style="">Browse Current Movies Catolog</a>
+      <a href="{% url 'upcoming movie list' %}" class="delete-album-btn" style="">Browse Upcoming Movies Catolog</a>
     </div>
     <div class="booking-section">
       <h2>Your Bookings:</h2>
@@ -141,15 +206,16 @@
       {% else %}
         <p>You have not made any bookings yet.</p>
       {% endif %}
+    </div> 
+    <div class="content">
+      <h1>ADA Compliance Features</h1>
+      
+      <p>The following features meet the requirements of the Americans with Disabilities Act (ADA) and other relevant government regulations.</p> 
+      <br></br>
+      <p>Alternative text descriptions for images and videos, which allow visually impaired users to understand the content of the page.</p>
+      <p>Consistent layout and navigation, which helps users with cognitive disabilities to navigate the site more easily.</p>
     </div>
-
-    <!-- -----------------------------------------ALBUM SECTION---------------------------------------- -->
-    <!-- Tab-Section -->
-    <div class="button-group" style=" ">
-      <a href="{% url 'movie list' %}" class="edit-album-btn" style="">Browse Current Movies Catolog</a>
-      <a href="{% url 'upcoming movie list' %}" class="delete-album-btn" style="">Browse Upcoming Movies Catolog</a>
-    </div>
-    
+   
 
     <!-- ----------------------------------------------END------------------------------------------- -->
 

@@ -215,7 +215,7 @@ def payment(request):
     return render(request, 'main/payment.html', {'form': form})
 
 def success(request):
-    random_number = random.randint(1, 100)
+    random_number = random.randint(95645, 100020)
     context = {'random_number': random_number}
     return render(request, 'main/success.html', context)
 

@@ -18,14 +18,84 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link href= "{% static 'js/sript.js' %}" rel="stylesheet">
     <title>Profile Page</title>
-    <p class="name">{{random_number}}</p>
+ 
 
 
   </head>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .heading {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .code {
+      font-size: 48px;
+      color: #007bff;
+      letter-spacing: 4px;
+      margin-bottom: 50px;
+    }
+  </style>
   <body>
 
 
-    
+    <div class="container">
+      <h1 class="heading">Print your code as your ticket</h1>
+      <p class="code">{{ random_number }}</p>
+      <div style=" display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      padding: 20px;">
+    <p style="margin-bottom: 10px; text-align: center;">For computer users to print use the following commands:</p>
+    <div style="display: flex; flex-direction: row; align-items: center;">
+      <div style="width: 100px; margin-right: 10px; text-align: right;">Windows:</div>
+      <div style="background-color: #f7f7f7; padding: 4px 8px; border-radius: 4px; text-align: center;">Ctrl + P</div>
+    </div>
+    <div style="display: flex; flex-direction: row; align-items: center; margin-top: 10px;">
+      <div style="width: 100px; margin-right: 10px; text-align: right;">Mac:</div>
+      <div style="background-color: #f7f7f7; padding: 4px 8px; border-radius: 4px; text-align: center;">Command + P</div>
+    </div>
+    <div style="display: flex; flex-direction: row; align-items: center; margin-top: 10px;">
+      <div style="width: 100px; margin-right: 10px; text-align: right;">Linux:</div>
+      <div style="background-color: #f7f7f7; padding: 4px 8px; border-radius: 4px; text-align: center;">Ctrl + P</div>
+    </div>
+    <br></br>
+
+    <p style="margin-top: 20px; margin-bottom: 10px; text-align: center;">For phone users to print use the following commands:</p>
+    <div style="display: flex; flex-direction: row; align-items: center;">
+      <div style="width: 100px; margin-right: 10px; text-align: right;">iOS:</div>
+      <div style="background-color: #f7f7f7; padding: 4px 8px; border-radius: 4px; text-align: center;">Press the Side button and the Volume Up button at the same time. The screen will flash white, indicating that a screenshot has been taken.</div>
+    </div>
+    <div style="display: flex; flex-direction: row; align-items: center; margin-top: 10px;">
+      <div style="width: 100px; margin-right: 10px; text-align: right;">Android:</div>
+      <div style="background-color: #f7f7f7; padding: 4px 8px; border-radius: 4px; text-align: center;">Depending on the brand and model of your phone, the method for taking a screenshot may differ slightly.</div>
+    </div>
+    <div style="display: flex; flex-direction: row; align-items: center; margin-top: 10px; margin-right:150px;">
+      <div style="width: 100px; margin-right: 10px; text-align: right;">Samsung Galaxy:</div>
+      <div style="background-color: #f7f7f7; padding: 4px 8px; border-radius: 4px; text-align: center;">Press the power button and volume down button at the same time.</div>
+
+      </div>
+      <div style="display: flex; flex-direction: row; align-items: center; margin-top: 10px;">
+        <div style="width: 100px; margin-right: 10px;">Google Pixel:</div>
+        <div style="background-color: #f7f7f7; padding: 4px 8px; border-radius: 4px;">Press the power button and volume down button at the same time, or swipe down from the top of the screen and tap the screenshot icon.</div>
+      </div>
+      
+      
+     
+    </div>
+  
 
     <!-- ----------------------------------------------END------------------------------------------- -->
 

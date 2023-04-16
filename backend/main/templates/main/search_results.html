@@ -3,7 +3,24 @@
 
 {% block content %}
 
-
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
+    <link href= "{% static 'css/style.css' %}" rel="stylesheet">
+    <link href= "{% static 'js/sript.js' %}" rel="stylesheet">
+    <title>Profile Page</title>
+  </head>
 <style type="text/css">
 	.profile-image{
 		max-height: 100px;
@@ -39,7 +56,221 @@
 	.cancel-icon{
 		color: red;
 	}
+
+
+
+
+
+    .header {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+    
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .movie {
+        box-sizing: border-box;
+        width: 45%;
+        margin: 1.5%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+      }
+    
+      .movie img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+    
+      .title-container {
+        position: absolute;
+        top: 50%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+      }
+    
+      .title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    
+      .user-container {
+        margin-top: 10px;
+      }
+    
+      .username {
+        margin: 0;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    
+      .message {
+        margin: 0;
+        font-size: 14px;
+        color: #666;
+      }
+    
+      @media only screen and (max-width: 768px) {
+        .movie {
+          width: 90%;
+        }
+      }
 </style>
+
+
+<div>
+    <div class="header">Movies out now!</div>
+    <div class="container">
+      {% if movies %}
+        {% for movie in movies %}
+          <div class="movie">
+            <a href="{% url 'movie_detail' movie_id=movie.id %}">
+              <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
+            </a>
+            <div class="title-container">
+              <h4 >{{ movie.title }}</h4>
+            </div>
+            <a href="">
+              <div class="user-container">
+                <h4 class="username">{{ profile.0.user }}</h4>
+                {% if profile.1 %}
+                <p class="message"><a href="#" onclick="createOrReturnPrivateChat('{{profile.0.id}}')">Send a Message</a></p>
+                {% endif %}
+              </div>
+            </a>
+          </div>
+          {% if forloop.counter|divisibleby:2 %}
+            <div style="clear:both;"></div>
+          {% endif %}
+        {% endfor %}
+      {% else %} <!-- If no friends -->
+        <div>
+          <p>No results</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+
+
+
+  <div>
+    <div class="header">Movies coming soon!</div>
+    <div class="container">
+        {% if newmovies %}
+        {% for newmovie in newmovies %}
+          <div class="movie">
+            <a class="profile-link" href="{% url 'new_movie_detail' new_movie_id=newmovie.id %}">
+                <img src="{{ newmovie.image.url }}" alt="{{ newmovie.title }}">
+            </a>
+            <div class="title-container">
+              <h4 >{{ newmovie.title }}</h4>
+            </div>
+            <a href="">
+              <div class="user-container">
+                <h4 class="username">{{ profile.0.user }}</h4>
+                {% if profile.1 %}
+                <p class="message"><a href="#" onclick="createOrReturnPrivateChat('{{profile.0.id}}')">Send a Message</a></p>
+                {% endif %}
+              </div>
+            </a>
+          </div>
+          {% if forloop.counter|divisibleby:2 %}
+            <div style="clear:both;"></div>
+          {% endif %}
+        {% endfor %}
+      {% else %} <!-- If no friends -->
+        <div>
+          <p>No results</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+
+
+
+
+  <div class="container">
+    <div class="header">Theatres</div>
+    <div class="row">
+      {% if theaters %}
+        {% for theatre in theaters %}
+          <div class="col-md-6 col-lg-6">
+            <div class="card mb-3">
+            
+              <div class="card-body text-center">
+                <h5 class="card-title">{{ theatre.name }}</h5>
+              </div>
+            </div>
+          </div>
+          {% if forloop.counter|divisibleby:2 %}
+            <div class="w-100"></div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <div class="col">
+          <p>No results</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+
+
+
+<!-- Theatre -->
+<div class="container">
+    <div class="card p-2">
+        {% if theatres %}
+        <div class="d-flex flex-row flex-wrap">
+			{% for theatre in theatres %}
+        <div class="card flex-row flex-grow-1 p-2 mx-2 my-2 align-items-center">
+            <a class="profile-link" href="">
+                <div class="card-image m-2">
+                    <img src="{{ theatre.image.url }}" alt="{{ theatre.title }}">
+                </div>
+            </a>
+            <a class="profile-link" href="">
+                <div class="card-center px-2">
+                    <h4 class="card-title">{{profile.0.user}}</h4>
+                    {% if profile.1 %}
+                    <p class="card-text"><a href="#" onclick="createOrReturnPrivateChat('{{profile.0.id}}')">Send a Message</a></p>
+                    {% endif %}
+
+
+                </div>
+            </a>
+        </div>
+        {% if forloop.counter|divisibleby:2 %}
+        </div><div class="d-flex flex-row flex-wrap">
+        {% endif %}
+
+
+        {% endfor %}
+        {% else %} <!-- If no friends -->
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
 
 <!--User -->
 <div class="container">
@@ -77,126 +308,6 @@
     </div>
 </div>
 
-
-<div>Movies out now!</div>
-<!-- Movie -->
-<div class="container">
-	<div class="card p-2">
-		{% if movies %}
-		<div class="d-flex flex-row flex-wrap">
-			{% for movie in movies %}
-		<div class="card flex-row flex-grow-1 p-2 mx-2 my-2 align-items-center">
-			<a class="profile-link" href="{% url 'movie_detail' movie_id=movie.id %}">
-				<div class="card-image m-2">
-					<img src="{{ movie.image.url }}" alt="{{ movie.title }}">
-                    
-				</div>
-			</a>
-			<a class="profile-link" href="">
-				<div class="card-center px-2">
-					<h4 class="card-title">{{profile.0.user}}</h4>
-					{% if profile.1 %}
-					<p class="card-text"><a href="#" onclick="createOrReturnPrivateChat('{{profile.0.id}}')">Send a Message</a></p>
-					{% endif %}
-                    <h4 class="card-title">{{ movie.title }}</h4> <!-- Add movie title here -->
-				</div>
-			</a>
-		</div>
-		{% if forloop.counter|divisibleby:2 %}
-		</div><div class="d-flex flex-row flex-wrap">
-		{% endif %}
-
-		{% endfor %}
-		{% else %} <!-- If no friends -->
-		<div class="d-flex flex-row flex-grow-1 justify-content-center align-items-center p-4">
-			<p>No results</p>
-		</div>
-		{% endif %}
-		</div>
-	</div>
-
-</div>
-
-<div>Movies coming soon!</div>
-<!--New Movie -->
-<div class="container">
-    <div class="card p-2">
-        {% if newmovies %}
-        <div class="d-flex flex-row flex-wrap">
-			{% for newmovie in newmovies %}
-        <div class="card flex-row flex-grow-1 p-2 mx-2 my-2 align-items-center">
-            <a class="profile-link" href="{% url 'new_movie_detail' new_movie_id=newmovie.id %}">
-                <div class="card-image m-2">
-                    <img src="{{ newmovie.image.url }}" alt="{{ newmovie.title }}">
-                </div>
-            </a>
-            <a class="profile-link" href="">
-                <div class="card-center px-2">
-                    
-                    <h4 class="card-title">{{ newmovie.title }}</h4> <!-- Add movie title here -->
-                    {% if profile.1 %}
-                    <p class="card-text"><a href="#" onclick="createOrReturnPrivateChat('{{profile.0.id}}')">Send a Message</a></p>
-                    {% endif %}
-                </div>
-            </a>
-        </div>
-        {% if forloop.counter|divisibleby:2 %}
-        </div><div class="d-flex flex-row flex-wrap">
-        {% endif %}
-        {% endfor %}
-        {% else %} <!-- If no friends -->
-        <div class="d-flex flex-row flex-grow-1 justify-content-center align-items-center p-4">
-            <p>No results</p>
-        </div>
-        {% endif %}
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-<!-- Theatre -->
-<div class="container">
-    <div class="card p-2">
-        {% if theatres %}
-        <div class="d-flex flex-row flex-wrap">
-			{% for theatre in theatres %}
-        <div class="card flex-row flex-grow-1 p-2 mx-2 my-2 align-items-center">
-            <a class="profile-link" href="">
-                <div class="card-image m-2">
-                    <img src="{{ theatre.image.url }}" alt="{{ theatre.title }}">
-                </div>
-            </a>
-            <a class="profile-link" href="">
-                <div class="card-center px-2">
-                    <h4 class="card-title">{{profile.0.user}}</h4>
-                    {% if profile.1 %}
-                    <p class="card-text"><a href="#" onclick="createOrReturnPrivateChat('{{profile.0.id}}')">Send a Message</a></p>
-                    {% endif %}
-
-
-                </div>
-            </a>
-        </div>
-        {% if forloop.counter|divisibleby:2 %}
-        </div><div class="d-flex flex-row flex-wrap">
-        {% endif %}
-
-
-        {% endfor %}
-        {% else %} <!-- If no friends -->
-        <div class="d-flex flex-row flex-grow-1 justify-content-center align-items-center p-4">
-            <p>No results</p>
-        </div>
-        {% endif %}
-        </div>
-    </div>
-</div>
 
 {#%  include 'chat/create_or_return_private_chat.html' %#}
 
